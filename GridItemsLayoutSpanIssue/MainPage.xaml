@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GridItemsLayoutSpanIssue.MainPage"
+             xmlns:local="clr-namespace:GridItemsLayoutSpanIssue">
+    <ContentPage.BindingContext>
+        <local:MainViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <CollectionView ItemsSource="{Binding Items, Mode=OneWay}" SizeChanged="CollectionView_SizeChanged">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="x:String">
+                    <Border StrokeThickness="8">
+                        <VerticalStackLayout>
+                            <Image HeightRequest="200" Source="dotnet_bot.png" HorizontalOptions="Center" />
+                            <Label Text="{Binding}"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Span="2" Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+        </CollectionView>
+    </Grid>
+
+</ContentPage>
